@@ -1,14 +1,15 @@
 import turtle as trtl
 #trtl shapes for animals
 #trtl.addshape("trotters"((-4,0),(-2,-4),(0,0),(2,-4),(4,0)))
-#animal_parts = ["trotters"]
+animal_parts = ["trotters"]
 #Choose animal
 animals = ["Pig", "Rat", "Chicken"]
 
 #ask what animal they want
 animal_chosen = input("Pig, or Chicken?")
+animal_chosen = animal_chosen.lower()
 
-if animal_chosen == "Pig":
+if animal_chosen == "pig":
  #Body
  trtl.speed(100)
  trtl.pencolor("pink")
@@ -62,7 +63,7 @@ if animal_chosen == "Pig":
   trtl.forward(8 + i)
   trtl.left(40)
 
-if animal_chosen == "Chicken":
+if animal_chosen == "chicken":
  #Body
  trtl.speed(100)
  trtl.penup()
