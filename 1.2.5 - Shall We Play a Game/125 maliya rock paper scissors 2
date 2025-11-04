@@ -5,16 +5,22 @@
 import turtle as trtl
 wn = trtl.Screen()
 import random
+from functools import partial
+
 
 trtl.addshape("P", ((0,3), (.5,2), (1,3), (2,3), (2,-3), (-2,-3), (-2,3)))
 trtl.addshape("R", ((0,-2), (-3,-2), (-4,0), (-2,1), (-1,1), (1,2), (2,1), (3,1), (4,0), (3.5,-2)))
-
+trtl.addshape("S", ((0,0), (-2.5,-4), (-4,-3), (-1,1), (-3,2), (-3.5,3), (-4,5), (-3,7), (-2,6), (-1,5), (1,5), (2,6), (3,7), (4,5), (3.5,3), (3,2), (1,1), (4,-3), (2.5,-4), (0,0)))
 options = ("rock", "paper", "scissors")
-player = None
+player = ""
 comp = random.choice(options)
 
 rock1 = trtl.Turtle(shape="R")
+rock1.name = "rock"
 paper1 = trtl.Turtle(shape="P")
+paper1.name = "paper"
+scissors1 = trtl.Turtle(shape="S")
+scissors1.name = "scissors"
 
 start_button = trtl.Turtle()
 start_button.shape("square")
@@ -26,8 +32,18 @@ start_button.goto(0,-35)
 
 rock1.hideturtle()
 paper1.hideturtle()
+scissors1.hideturtle()
+
 
 #game functions
+
+def dummy(x,y):
+    print()
+    
+
+
+
+
 def game_start(x,y):
     start_button.hideturtle()
     start_button.clear()
@@ -41,14 +57,33 @@ def game_start(x,y):
     paper1.shapesize(10)
     paper1.goto(0,0)
     paper1.left(90)
-    
-def turtle_clicked(x,y):
+    scissors1.penup()
+    scissors1.showturtle()
+    scissors1.shapesize(6)
+    scissors1.goto(100,0)
+    scissors1.left(90)
+    rock1.onclick(partial(turtle_clicked, rock1))
+    paper1.onclick(partial(turtle_clicked, paper1))
+    scissors1.onclick(partial(turtle_clicked, scissors1))
+
+def turtle_clicked(turtle_obj,x,y):
+    global player
+    player = turtle_obj.name
+    turtle_obj.color("red")
+    rock1.onclick(dummy)
+    paper1.onclick(dummy)
+    scissors1.onclick(dummy)
     print(f"Player: {player}")
     print(f"Computer: {comp}")
-    trtl.Turtle(color="red")
+    
 
-rock1.onclick(turtle_clicked)(color="red")
-paper1.onclick(turtle_clicked)
+
+
+
+
+
+
+
 
 
 
