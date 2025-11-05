@@ -7,13 +7,18 @@ wn = trtl.Screen()
 import random
 from functools import partial
 
-
+#custom turtles
 trtl.addshape("P", ((0,3), (.5,2), (1,3), (2,3), (2,-3), (-2,-3), (-2,3)))
 trtl.addshape("R", ((0,-2), (-3,-2), (-4,0), (-2,1), (-1,1), (1,2), (2,1), (3,1), (4,0), (3.5,-2)))
 trtl.addshape("S", ((0,0), (-2.5,-4), (-4,-3), (-1,1), (-3,2), (-3.5,3), (-4,5), (-3,7), (-2,6), (-1,5), (1,5), (2,6), (3,7), (4,5), (3.5,3), (3,2), (1,1), (4,-3), (2.5,-4), (0,0)))
+
+#varibles
 options = ("rock", "paper", "scissors")
 player = ""
 comp = random.choice(options)
+playing = True
+
+
 
 rock1 = trtl.Turtle(shape="R")
 rock1.name = "rock"
@@ -75,9 +80,21 @@ def turtle_clicked(turtle_obj,x,y):
     scissors1.onclick(dummy)
     print(f"Player: {player}")
     print(f"Computer: {comp}")
+    if player == comp:
+        print("Its a tie!")
+    elif player == "rock1" and comp == "scissors1":
+        print("You win!")
+    elif player == "paper1" and comp == "rock1":
+        print("You win!")
+    elif player == "scissors1" and comp == "paper1":
+        print("You win!")
+    else:
+        print("You lose")
+
+
     
 
-
+#def game_end(x,y):
 
 
 
